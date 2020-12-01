@@ -1,0 +1,34 @@
+﻿<config lang="json">
+{
+  "name": "Pokémon Chooser",
+  "type": "web-worker",
+  "tags": [],
+  "ui": "",
+  "version": "0.1.0",
+  "cover": "",
+  "description": "This is a demo plugin for choosing Pokémons",
+  "icon": "extension",
+  "inputs": null,
+  "outputs": null,
+  "api_version": "0.1.8",
+  "env": "",
+  "permissions": [],
+  "requirements": [],
+  "dependencies": []
+}
+</config>
+<script lang="javascript">
+class ImJoyPlugin{
+    async setup(){
+        await api.log("plugin initialized")
+    }
+    async choosePokemon(){
+        const pokemon = await api.prompt("What is your favorite Pokémon?", "Pikachu")
+        await api.showMessage("Your have chose " + pokemon + " as your Pokémon.")
+    }
+    async run(ctx){
+        await this.choosePokemon()
+    }
+}
+api.export(new ImJoyPlugin())
+</script>
